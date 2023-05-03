@@ -5,15 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
     <script src="index.js" defer></script>
     <title>Color Scheme Generator</title>
   </head>
   <body>
-    <form>
-      <input id="color-picker" type="color">
-      <button id="get-scheme-btn">Get Scheme</button>
-    </form>
-    <div class="colors-container" id="colors-container">
-    </div>
+    <main>
+      <div class="form-container">
+          <input id="color-picker" class="color-picker" type="color" />
+          <select id="mode-select" class="mode-select">
+            <option value="monochrome">Monochrome</option>
+            <option value="monochrome-dark">Monochrome Dark</option>
+            <option value="monochrome-light">Monochrome Light</option>
+            <option value="analogic">Analogic</option>
+            <option value="complement">Complement</option>
+            <option value="analogic-complement">Analogic Complement</option>
+            <option value="triad">Triad</option>
+            <option value="quad">Quad</option>
+          </select>
+          <button id="get-scheme-btn" class="get-scheme-btn">Get Scheme</button>
+      </div>
+      <div class="colors-container" id="colors-container"></div>
+      <div class="colors-name-container" id="colors-name-container"></div>
+    </main>
   </body>
 </html>
