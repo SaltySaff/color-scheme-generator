@@ -17,21 +17,24 @@
   <body>
     <main>
       <div class="form-container">
-          <input id="color-picker" class="color-picker" type="color" />
-          <select id="mode-select" class="mode-select">
-            <option value="monochrome">Monochrome</option>
-            <option value="monochrome-dark">Monochrome Dark</option>
-            <option value="monochrome-light">Monochrome Light</option>
-            <option value="analogic">Analogic</option>
-            <option value="complement">Complement</option>
-            <option value="analogic-complement">Analogic Complement</option>
-            <option value="triad">Triad</option>
-            <option value="quad">Quad</option>
-          </select>
-          <button id="get-scheme-btn" class="get-scheme-btn">Get Scheme</button>
+        <input id="color-picker" class="color-picker" type="color" />
+        <select id="mode-select" class="mode-select">
+          <option value="monochrome">Monochrome</option>
+          <option value="monochrome-dark">Monochrome Dark</option>
+          <option value="monochrome-light">Monochrome Light</option>
+          <option value="analogic">Analogic</option>
+          <option value="complement">Complement</option>
+          <option value="analogic-complement">Analogic Complement</option>
+          <option value="triad">Triad</option>
+          <option value="quad">Quad</option>
+        </select>
+        <button id="get-scheme-btn" class="get-scheme-btn">Get Scheme</button>
       </div>
-      <div class="colors-container" id="colors-container"></div>
-      <div class="colors-name-container" id="colors-name-container"></div>
+      <div class="colors-container" id="colors-container">
+        <div class="color-container">
+          <div class="color" id="color0"></div>
+        </div>
+      </div>
     </main>
   </body>
 </html>

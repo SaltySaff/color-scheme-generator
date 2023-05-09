@@ -2,29 +2,40 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
-    color: #2B283A;
+    color:#D5D4D8
+}
+
+body {
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 90%;
+    background-color: #1F2937;
 }
 
 main {
     display: flex;
-    gap: 1em;
     box-sizing: border-box;
     flex-direction: column;
     justify-content: center;
     height: 70vh;
-    max-width: 750px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.main-container {
+    height: 100%;
 }
 
 .colors-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     height: 100%;
+    width: 100%;
+    min-width: 500px;
+    max-width: 800px;
 }
 
 .colors-name-container {
@@ -32,16 +43,21 @@ main {
     justify-content: space-around;
 }
 
-.color-container {
-    border: solid black 1px;
+.color {
     height: 100%;
-    width: 300%;
+}
+
+.color-container {
+    height: 100%;
+    width: 100%;
 }
 
 .form-container {
     display: flex;
     align-items: center;
     gap: 0.5em;
+    min-width: 470px;
+    padding: 1em;
 }
 
 .color-picker, .mode-select, .get-scheme-btn {
@@ -49,18 +65,40 @@ main {
 }
 
 .color-picker {
-    border: 1px solid black;
+    border: 0.5px solid #313131;
     padding: 0;
     height: 2.5rem;
     background-color: white;
 }
 
 .mode-select {
+    color: #D1D5DB;
     height: 100%;
+    border: 1px solid #D1D5DB;
+    background-color: #1F293A;
+    width: 300px;
+    border-radius: 6px;
+    padding: 1em;
 }
 
 .color-name {
-    font-size: 1rem;
+    font-size: 0.75rem;
+    margin-top: 0.75em;
     text-align: center;
     width: 100%;
+}
+
+.get-scheme-btn {
+    background-color: #3D4B60;
+    border: none;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding: 1em;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.get-scheme-btn:hover {
+    background-color: #2B283A;
+    border-color: #2B283A;
+    color: white;
 }

@@ -1,33 +1,15 @@
-/* eslint-disable no-param-reassign */
-
-const generateColorContainers = (count) => {
-  const containers = [];
-  const colorsContainer = document.getElementById("colors-container");
-  let newDiv;
-
+const getContainersHtml = (count) => {
+  let html = "";
   for (let i = 0; i < count; i += 1) {
-    newDiv = document.createElement("div");
-    newDiv.className = "color-container";
-    newDiv.id = `color${i + 1}`;
-    containers.push(newDiv);
-    colorsContainer.appendChild(newDiv);
+    html += `
+      <div class="color-container">
+        <div class="color" id="color${i + 1}"></div>
+        <div class="color-name" id="color${i + 1}-name"></div>
+        <div class="color-name" id="color${i + 1}-hex"></div>
+      </div>
+    `
   }
-  return containers;
-};
-
-const generateColorNameContainers = (count) => {
-  const names = [];
-  const colorsNameContainer = document.getElementById("colors-name-container");
-  let newDivName;
-
-  for (let i = 0; i < count; i += 1) {
-    newDivName = document.createElement("div");
-    newDivName.className = "color-name";
-    newDivName.id = `color${i + 1}-name`;
-    names.push(newDivName);
-    colorsNameContainer.appendChild(newDivName);
-  }
-  return names;
+  return html;
 };
 
 const getRandomHexColor = () => {
@@ -41,49 +23,26 @@ const getRandomHexColor = () => {
   return color;
 };
 
-const colorContainers = generateColorContainers(5);
-const colorNameContainers = generateColorNameContainers(5);
+const render = (colors) => {
+  const colorsContainer = document.getElementById("colors-container")
+  colorsContainer.innerHTML = getContainersHtml(5)
 
-const renderColors = (colorsArray) => {
-  colorContainers.forEach((colorEl, index) => {
-    colorEl.style.backgroundColor = colorsArray[index];
+  colors.forEach((color, index) => {
+    document.getElementById(`color${index + 1}`).style.backgroundColor = color.hex.value
+    document.getElementById(`color${index + 1}-name`).textContent = color.name.value
+    document.getElementById(`color${index + 1}-hex`).textContent = color.hex.value
   });
 };
 
-const renderColorNames = (namesArray) => {
-  colorNameContainers.forEach((colorEl, index) => {
-    colorEl.textContent = namesArray[index]
-  })
-}
-
-const getColorsArray = (scheme) => {
-  const colors = [];
-  scheme.colors.forEach((color) => {
-    colors.push(color.hex.value);
-  });
-  return colors;
-};
-
-const getColorNamesArray = (scheme) => {
-  const colorNames = []
-  scheme.colors.forEach((color) => {
-    colorNames.push(`${color.name.value}\n${color.hex.value}`);
-  });
-  return colorNames;
-
-}
-
-const fetchScheme = (color) => {
+const fetchScheme = (colorHex) => {
   const selectedMode = document.getElementById("mode-select").value;
   fetch(
-    `https://www.thecolorapi.com/scheme?hex=${color}&format=json&mode=${selectedMode}&count=5`
+    `https://www.thecolorapi.com/scheme?hex=${colorHex}&format=json&mode=${selectedMode}&count=5`
   )
     .then((res) => res.json())
     .then((scheme) => {
-      const colorsArray = getColorsArray(scheme);
-      const namesArray = getColorNamesArray(scheme);
-      renderColors(colorsArray);
-      renderColorNames(namesArray)
+      const { colors } = scheme;
+      render(colors)
     });
 };
 
